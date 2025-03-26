@@ -5,3 +5,4 @@ services:
       - ./default_names.json:/app/default_names.json
     env_file:
       - .env
+    user: root
