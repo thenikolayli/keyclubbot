@@ -1,0 +1,7 @@
+services:
+  client:
+    build: .
+    volumes:
+      - ./default_names.json:/app/default_names.json
+    env_file:
+      - .env
