@@ -1,6 +1,6 @@
 services:
   client:
-    build: .
+    image: nikolayli/keyclubbot:1.0.0
     volumes:
       - ./default_names.json:/app/default_names.json
     env_file:
