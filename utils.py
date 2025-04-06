@@ -23,7 +23,7 @@ def url_to_id(url):
         except IndexError:
             return url
 
-async def update_hours_map(names_col_arg, nicknames_col_arg, year_col_arg, term_hour_col_arg, all_hours_call_arg):
+async def update_hours_list(names_col_arg, nicknames_col_arg, year_col_arg, term_hour_col_arg, all_hours_call_arg):
     names_hours_data_request = await asyncio.to_thread(
         service.spreadsheets().values().batchGet,
         spreadsheetId=SPREADSHEET_ID,
