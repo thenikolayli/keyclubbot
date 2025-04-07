@@ -78,8 +78,8 @@ async def setname(interaction: Interaction, name: str):
     write_default_name(interaction.user.id, name)
     await interaction.response.send_message(f"Default name set to {name}", ephemeral=True)
 
-@client.tree.command(name="update_hours", description="Updates the /hours command")
-async def update_hours(interaction: Interaction):
+@client.tree.command(name="updatehours", description="Updates the /hours command")
+async def updatehours(interaction: Interaction):
     global last_update
 
     if time() - last_update <= UPDATE_DELAY:
@@ -93,5 +93,21 @@ async def update_hours(interaction: Interaction):
     await interaction.response.send_message(
         f"Hours have been updated, you may update them again in 5 minutes",
         ephemeral=False)
+
+@client.tree.command(name="help", description="Shows the help message")
+async def help(interaction: Interaction):
+    embed = Embed(
+        title="Help",
+        description="""
+Here are this bots commands:
+- `/help`: Shows this message
+- `/hours`: Shows your hours if you have a set name
+- `/hours {name}`: Shows the hours of the person with the name specified
+- `/setname {name}`: Sets the default name for you with the name specified
+- `/updatehours`: Updates the hours for the bot, 5 min cooldown
+        """,
+        color=Color.gold()
+    )
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 client.run(TOKEN)
