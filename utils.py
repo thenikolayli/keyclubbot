@@ -24,6 +24,9 @@ def url_to_id(url):
             return url
 
 async def update_hours_list(names_col_arg, nicknames_col_arg, year_col_arg, term_hour_col_arg, all_hours_call_arg):
+    global names_hours_list
+    names_hours_list.clear()
+
     names_hours_data_request = await asyncio.to_thread(
         service.spreadsheets().values().batchGet,
         spreadsheetId=SPREADSHEET_ID,
@@ -55,6 +58,8 @@ async def update_hours_list(names_col_arg, nicknames_col_arg, year_col_arg, term
         })
 
 def get_hours(name):
+    global names_hours_list
+
     if len(names_hours_list) == 0:
         return None
 
@@ -66,6 +71,8 @@ def get_hours(name):
     return None
 
 def get_year_ranking(year):
+    global names_hours_list
+
     if len(names_hours_list) == 0:
         return None
 
